@@ -1,0 +1,47 @@
+name: "📌 Task (All-in-One)"
+description: 모든 종류의 이슈 공용 템플릿
+title: "[Type] #{이슈번호} - 한 줄 요약"
+labels: []
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options: ["Feature","Bug","Chore","Style","Docs","Refactor"]
+    validations: { required: true }
+
+  - type: textarea
+    id: context
+    attributes:
+      label: 목적/배경
+    validations: { required: true }
+
+  - type: textarea
+    id: body
+    attributes:
+      label: 본문 (유형별 가이드)
+      description: |
+        - Feature: 요구사항 체크리스트, 라우트, API/계약 링크
+        - Bug: 재현(1-2-3), 기대/실제, 심각도(S1~S4)
+        - Chore/Style/Docs/Refactor: 작업 범위/영향, DoD
+      placeholder: "- [ ] 요구사항1 …"
+    validations: { required: true }
+
+  - type: textarea
+    id: ac
+    attributes:
+      label: 수용조건(AC)
+      placeholder: "Given...\nWhen...\nThen..."
+    validations: { required: true }
+
+  - type: input
+    id: route
+    attributes: { label: 라우트(해당 시), placeholder: "/path" }
+
+  - type: input
+    id: links
+    attributes: { label: 참고 링크, placeholder: "디자인/플로우/계약/문서" }
+
+  - type: markdown
+    attributes:
+      value: "브랜치 규칙: `type/{이슈번호-요약}` 예) `feat/5-cart-modal`"
